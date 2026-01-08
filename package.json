@@ -1,0 +1,32 @@
+{
+    "name": "fastify-project",
+    "version": "1.0.0",
+    "description": "Projeto Node.js com Fastify e TypeScript",
+    "main": "dist/server.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/server.js",
+        "dev": "tsx watch server.ts",
+        "type-check": "tsc --noEmit"
+    },
+    "keywords": [
+        "fastify",
+        "nodejs",
+        "typescript",
+        "api"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@google/generative-ai": "^0.12.0",
+        "dotenv": "^17.2.3",
+        "fastify": "^4.24.3",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.0",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.3"
+    }
+}

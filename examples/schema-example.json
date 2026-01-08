@@ -1,0 +1,84 @@
+{
+  "databaseName": "ecommerce",
+  "tables": [
+    {
+      "name": "users",
+      "description": "Tabela de usuários do sistema",
+      "columns": [
+        { "name": "id", "type": "INTEGER", "primaryKey": true },
+        { "name": "name", "type": "VARCHAR(255)" },
+        { "name": "email", "type": "VARCHAR(255)" },
+        { "name": "phone", "type": "VARCHAR(20)", "nullable": true },
+        { "name": "created_at", "type": "TIMESTAMP" },
+        { "name": "updated_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "products",
+      "description": "Tabela de produtos",
+      "columns": [
+        { "name": "id", "type": "INTEGER", "primaryKey": true },
+        { "name": "name", "type": "VARCHAR(255)" },
+        { "name": "description", "type": "TEXT", "nullable": true },
+        { "name": "price", "type": "DECIMAL(10,2)" },
+        { "name": "stock", "type": "INTEGER", "nullable": false },
+        { "name": "category_id", "type": "INTEGER", "foreignKey": { "table": "categories", "column": "id" } },
+        { "name": "created_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "categories",
+      "description": "Tabela de categorias de produtos",
+      "columns": [
+        { "name": "id", "type": "INTEGER", "primaryKey": true },
+        { "name": "name", "type": "VARCHAR(100)" },
+        { "name": "description", "type": "TEXT", "nullable": true }
+      ]
+    },
+    {
+      "name": "orders",
+      "description": "Tabela de pedidos",
+      "columns": [
+        { "name": "id", "type": "INTEGER", "primaryKey": true },
+        { "name": "user_id", "type": "INTEGER", "foreignKey": { "table": "users", "column": "id" } },
+        { "name": "total", "type": "DECIMAL(10,2)" },
+        { "name": "status", "type": "VARCHAR(50)" },
+        { "name": "created_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "order_items",
+      "description": "Itens de cada pedido",
+      "columns": [
+        { "name": "id", "type": "INTEGER", "primaryKey": true },
+        { "name": "order_id", "type": "INTEGER", "foreignKey": { "table": "orders", "column": "id" } },
+        { "name": "product_id", "type": "INTEGER", "foreignKey": { "table": "products", "column": "id" } },
+        { "name": "quantity", "type": "INTEGER" },
+        { "name": "price", "type": "DECIMAL(10,2)" }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": { "table": "orders", "column": "user_id" },
+      "to": { "table": "users", "column": "id" },
+      "type": "many-to-one"
+    },
+    {
+      "from": { "table": "products", "column": "category_id" },
+      "to": { "table": "categories", "column": "id" },
+      "type": "many-to-one"
+    },
+    {
+      "from": { "table": "order_items", "column": "order_id" },
+      "to": { "table": "orders", "column": "id" },
+      "type": "many-to-one"
+    },
+    {
+      "from": { "table": "order_items", "column": "product_id" },
+      "to": { "table": "products", "column": "id" },
+      "type": "many-to-one"
+    }
+  ]
+}
+

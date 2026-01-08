@@ -1,0 +1,375 @@
+{
+  "databaseName": "softcomshop",
+  "tables": [
+    {
+      "name": "produto",
+      "description": "Tabela de produtos",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "primaryKey": true,
+          "autoIncrement": true,
+          "comment": "Codigo"
+        },
+        {
+          "name": "referencia",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "comment": "Referência"
+        },
+        {
+          "name": "codigo_barras",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "comment": "Código de Barras"
+        },
+        {
+          "name": "nome",
+          "type": "VARCHAR(255)",
+          "notNull": true,
+          "comment": "Descrição"
+        },
+        {
+          "name": "api_guid",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "grupo_id",
+          "type": "INTEGER",
+          "notNull": true,
+          "comment": "Grupo"
+        },
+        {
+          "name": "fabricante_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "comment": "Fabricante"
+        },
+        {
+          "name": "especifico_id",
+          "type": "INTEGER",
+          "unsigned": true,
+          "notNull": true
+        },
+        {
+          "name": "tipo_especifico",
+          "type": "ENUM('VEICULO','MEDICAMENTO','ARMAMENTO','COMBUSTIVEL','PAPEL')",
+          "nullable": true
+        },
+        {
+          "name": "similar_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "comment": "Similar"
+        },
+        {
+          "name": "observacao",
+          "type": "TEXT",
+          "nullable": true,
+          "comment": "Observação"
+        },
+        {
+          "name": "informacao_adicional",
+          "type": "TEXT",
+          "nullable": true,
+          "comment": "Informações Adicionais"
+        },
+        {
+          "name": "unidade_medida",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "default": "UND",
+          "comment": "Unidade Medida"
+        },
+        {
+          "name": "peso",
+          "type": "DECIMAL(15,4)",
+          "nullable": true,
+          "default": "0.0000"
+        },
+        {
+          "name": "altura",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "largura",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "comprimento",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "garantia",
+          "type": "VARCHAR(50)",
+          "nullable": true
+        },
+        {
+          "name": "especificacao",
+          "type": "TEXT",
+          "nullable": true,
+          "comment": "Especificação"
+        },
+        {
+          "name": "preco_compra",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000",
+          "comment": "Preço de Compra"
+        },
+        {
+          "name": "preco_venda",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000",
+          "comment": "Preço de Venda"
+        },
+        {
+          "name": "margem_lucro",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Margem de Lucro"
+        },
+        {
+          "name": "tipo_margem_lucro",
+          "type": "ENUM('PERCENTUAL','VALOR')",
+          "nullable": true,
+          "default": "PERCENTUAL"
+        },
+        {
+          "name": "vender",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "1"
+        },
+        {
+          "name": "controlar_estoque",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "1"
+        },
+        {
+          "name": "desativado",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "genero",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "habilitar_grade",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "order_attributes",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "ncm",
+          "type": "VARCHAR(8)",
+          "nullable": true
+        },
+        {
+          "name": "origem",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "cest",
+          "type": "VARCHAR(10)",
+          "nullable": true
+        },
+        {
+          "name": "percentual_comissao_produto",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Comissão"
+        },
+        {
+          "name": "servico",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "tipo_produto",
+          "type": "VARCHAR(50)",
+          "notNull": true,
+          "default": "PRODUTO"
+        },
+        {
+          "name": "agrupar_pedido",
+          "type": "TINYINT(4)",
+          "notNull": true,
+          "default": "1"
+        },
+        {
+          "name": "detalhe",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "quantidade_caixa",
+          "type": "DECIMAL(15,2)",
+          "nullable": true
+        },
+        {
+          "name": "codigo_barras_caixa",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "taxa_entrega",
+          "type": "TINYINT(4)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "habilitar_acompanhamento",
+          "type": "TINYINT(1)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "self_service",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "perguntar_adicionais",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "cobrar_taxa_entrega",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "nao_enviar_comanda",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "cobrar_taxa_servico",
+          "type": "TINYINT(1)",
+          "notNull": true,
+          "default": "1"
+        },
+        {
+          "name": "controlar_estoque_composicao",
+          "type": "TINYINT(4)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "taxa_adicional_delivery",
+          "type": "TINYINT(4)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "tipo_combo",
+          "type": "SMALLINT(6)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "tipo_faturamento",
+          "type": "SMALLINT(6)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "preco_a_partir_de",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000"
+        },
+        {
+          "name": "agrupar_impressao_item_combo",
+          "type": "TINYINT(4)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "modo_preparo",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "kds_tempo_preparo",
+          "type": "INTEGER",
+          "nullable": true
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": {
+        "table": "produto",
+        "column": "grupo_id"
+      },
+      "to": {
+        "table": "grupo",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto",
+        "column": "fabricante_id"
+      },
+      "to": {
+        "table": "fabricante",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto",
+        "column": "similar_id"
+      },
+      "to": {
+        "table": "produto",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    }
+  ]
+}
