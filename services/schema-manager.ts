@@ -1,14 +1,15 @@
 import { DatabaseSchema } from '../types/database.js';
 import { readFile, writeFile, mkdir } from 'fs/promises';
-import { join, dirname } from 'path';
+import { dirname , join} from 'path';
 import { existsSync } from 'fs';
 
 export class SchemaManager {
   private schemaPath: string;
   private schema: DatabaseSchema | null = null;
 
-  constructor(schemaPath: string = './data/schema.json') {
-    this.schemaPath = schemaPath;
+  constructor(schemaPath?: string) {
+    // process.cwd() pega a raiz do projeto no Render, independente de onde o script rode
+    this.schemaPath = schemaPath || join(process.cwd(), 'data', 'schema.json');
   }
 
   async loadSchema(): Promise<DatabaseSchema | null> {

@@ -2,7 +2,7 @@ import 'dotenv/config';
 import Fastify, { FastifyInstance } from 'fastify';
 import indexRoutes from './routes/index.js';
 import healthRoutes from './routes/health.js';
-import schemaRoutes from './routes/schema.js';
+// import schemaRoutes from './routes/schema.js';
 import queryRoutes from './routes/query.js';
 import { AIService } from './services/ai-service.js';
 
@@ -40,7 +40,7 @@ try {
 // Registrar rotas
 fastify.register(indexRoutes);
 fastify.register(healthRoutes);
-fastify.register(schemaRoutes);
+// fastify.register(schemaRoutes);
 fastify.register(queryRoutes);
 
 // Iniciar o servidor

@@ -1,10 +1,10 @@
-import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { FastifyInstance } from 'fastify';
 import { AIService } from '../services/ai-service.js';
-import { QueryRequest, QueryResponse } from '../types/database.js';
+import { QueryRequest } from '../types/database.js';
 
 export default async function queryRoutes(
   fastify: FastifyInstance,
-  options: FastifyPluginOptions
+  // options: FastifyPluginOptions
 ): Promise<void> {
   const aiService = fastify.aiService as AIService;
 

@@ -22,7 +22,6 @@ export default async function schemaRoutes(
   fastify.post<{ Body: DatabaseSchema }>('/api/schema', async (request, reply) => {
     try {
       // Validação básica
-      console.log(request.body);
       if (!request.body.databaseName || !request.body.tables || request.body.tables.length === 0) {
         reply.code(400);
         return { 

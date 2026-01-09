@@ -2,12 +2,207 @@
   "databaseName": "softcomshop",
   "tables": [
     {
+      "name": "empresa",
+      "description": "Tabela de Empresas cadastradas no ERP e suas configurações",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true,
+          "comment": "Codigo"
+        },
+        {
+          "name": "empresa_email_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "cnpj",
+          "type": "VARCHAR(18)",
+          "notNull": true,
+          "comment": "CNPJ"
+        },
+        {
+          "name": "inscricao_estadual",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "comment": "Inscrição Estadual"
+        },
+        {
+          "name": "inscricao_estadual_st",
+          "type": "VARCHAR(50)",
+          "nullable": true
+        },
+        {
+          "name": "inscricao_municipal",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "comment": "Inscrição Municipal"
+        },
+        {
+          "name": "nome",
+          "type": "VARCHAR(50)",
+          "notNull": true,
+          "comment": "Unidade"
+        },
+        {
+          "name": "fantasia",
+          "type": "VARCHAR(255)",
+          "notNull": true,
+          "comment": "Fantasia"
+        },
+        {
+          "name": "razao_social",
+          "type": "VARCHAR(255)",
+          "notNull": true,
+          "comment": "Razão Social"
+        },
+        {
+          "name": "ddd",
+          "type": "VARCHAR(4)",
+          "nullable": true,
+          "comment": "DDD"
+        },
+        {
+          "name": "telefone",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "comment": "Telefone"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "comment": "E-mail"
+        },
+        {
+          "name": "habilitar_emitir_nfe",
+          "type": "ENUM('SIM','NAO')",
+          "notNull": true,
+          "default": "NAO"
+        },
+        {
+          "name": "regime_tributario",
+          "type": "ENUM('SIMPLES NACIONAL','SIMPLES NACIONAL - EXCESSO DE SUBLEMITA DE RECEITA BRUTA','REGIME NORMAL')",
+          "notNull": true,
+          "default": "SIMPLES NACIONAL"
+        },
+        {
+          "name": "nfe_serie",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "nfe_numero",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "nfe_modelo",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "nfe_tipo_emissao",
+          "type": "INT(11)",
+          "notNull": true,
+          "comment": "Tipo Emissão"
+        },
+        {
+          "name": "nfe_codigo_uf",
+          "type": "INT(2)",
+          "notNull": true,
+          "default": "25",
+          "comment": "UF"
+        },
+        {
+          "name": "nuvem_nfe_empresa_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "certificado_nome",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "logomarca",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "troca_prazo",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "troca_mensagem",
+          "type": "LONGTEXT",
+          "nullable": true
+        },
+        {
+          "name": "mfe_chave_validador",
+          "type": "VARCHAR(50)",
+          "nullable": true
+        },
+        {
+          "name": "softcom_service_guid",
+          "type": "CHAR(36)",
+          "nullable": true
+        },
+        {
+          "name": "client_id",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "client_secret",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "tipo_inventario",
+          "type": "VARCHAR(10)",
+          "notNull": true,
+          "default": "CONTABIL"
+        },
+        {
+          "name": "formacao_preco",
+          "type": "VARCHAR(10)",
+          "notNull": true,
+          "default": "padrao"
+        },
+        {
+          "name": "timezone",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        }
+      ]
+    },
+    {
       "name": "produto",
       "description": "Tabela de produtos",
       "columns": [
         {
           "name": "id",
-          "type": "INTEGER",
+          "type": "INT(11)",
           "primaryKey": true,
           "autoIncrement": true,
           "comment": "Codigo"
@@ -37,20 +232,19 @@
         },
         {
           "name": "grupo_id",
-          "type": "INTEGER",
+          "type": "INT(11)",
           "notNull": true,
           "comment": "Grupo"
         },
         {
           "name": "fabricante_id",
-          "type": "INTEGER",
+          "type": "INT(11)",
           "nullable": true,
           "comment": "Fabricante"
         },
         {
           "name": "especifico_id",
-          "type": "INTEGER",
-          "unsigned": true,
+          "type": "INT(10) UNSIGNED",
           "notNull": true
         },
         {
@@ -60,7 +254,7 @@
         },
         {
           "name": "similar_id",
-          "type": "INTEGER",
+          "type": "INT(11)",
           "nullable": true,
           "comment": "Similar"
         },
@@ -147,19 +341,19 @@
         },
         {
           "name": "vender",
-          "type": "INTEGER",
+          "type": "INT(1)",
           "nullable": true,
           "default": "1"
         },
         {
           "name": "controlar_estoque",
-          "type": "INTEGER",
+          "type": "INT(1)",
           "nullable": true,
           "default": "1"
         },
         {
           "name": "desativado",
-          "type": "INTEGER",
+          "type": "INT(1)",
           "nullable": true,
           "default": "0"
         },
@@ -186,7 +380,7 @@
         },
         {
           "name": "habilitar_grade",
-          "type": "INTEGER",
+          "type": "INT(1)",
           "nullable": true,
           "default": "0"
         },
@@ -220,7 +414,7 @@
         },
         {
           "name": "servico",
-          "type": "INTEGER",
+          "type": "INT(11)",
           "nullable": true
         },
         {
@@ -331,7 +525,1102 @@
         },
         {
           "name": "kds_tempo_preparo",
-          "type": "INTEGER",
+          "type": "INT(11)",
+          "nullable": true
+        }
+      ]
+    },
+    {
+      "name": "produto_empresa",
+      "description": "Tabela que vincula produtos a empresas com detalhes fiscais e de custo",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "produto_id",
+          "type": "INT(11)",
+          "notNull": true,
+          "comment": "Produto"
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "notNull": true,
+          "comment": "Empresa"
+        },
+        {
+          "name": "regra_fiscal_id",
+          "type": "INT(10)",
+          "nullable": true,
+          "comment": "Regra Fiscal"
+        },
+        {
+          "name": "tributos_federais",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "tributos_estaduais",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "tributos_municipais",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "data_validade_ibpt",
+          "type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "fundo_combate_pobreza",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "preco_compra",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000",
+          "comment": "Preço Compra"
+        },
+        {
+          "name": "icms_compra",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "ICMS Compra"
+        },
+        {
+          "name": "icms_fronteira",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "ICMS Fronteira"
+        },
+        {
+          "name": "ipi",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "frete",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "encargo_financeiro",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "custo_fixo",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "imposto_federal",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "icms_venda",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "comissao",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Comissão"
+        },
+        {
+          "name": "marketing",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "outro_custo",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "preco_custo",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000",
+          "comment": "Ponto Equilibrio"
+        },
+        {
+          "name": "margem_sugerida",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "preco_sugerido",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000"
+        },
+        {
+          "name": "preco_venda",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000",
+          "comment": "Preço Venda"
+        },
+        {
+          "name": "preco_a",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Preço A"
+        },
+        {
+          "name": "preco_b",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Preço B"
+        },
+        {
+          "name": "preco_c",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Preço C"
+        },
+        {
+          "name": "estoque_minimo",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Estoque Mínimo"
+        },
+        {
+          "name": "localizacao",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "comment": "Localização"
+        },
+        {
+          "name": "alteracao_preco",
+          "type": "DATE",
+          "nullable": true,
+          "comment": "Alteração Preço"
+        },
+        {
+          "name": "promocao_preco",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00",
+          "comment": "Preço Promoção"
+        },
+        {
+          "name": "promocao_validade",
+          "type": "DATE",
+          "nullable": true,
+          "comment": "Validade Promoção"
+        },
+        {
+          "name": "promocao_quantidade_tipo",
+          "type": "ENUM('A PARTIR DE','MULTIPLOS DE','LEVE MAIS PAGUE MENOS')",
+          "nullable": true,
+          "comment": "Tipo Promoção"
+        },
+        {
+          "name": "promocao_multiplos",
+          "type": "INT(11)",
+          "nullable": true,
+          "comment": "Para Vendidos"
+        },
+        {
+          "name": "promocao_quantidade_bonificada",
+          "type": "INT(11)",
+          "nullable": true,
+          "comment": "Quantidade Bonificada"
+        },
+        {
+          "name": "balanca",
+          "type": "INT(1)",
+          "notNull": true,
+          "default": "0",
+          "comment": "Usa Balança"
+        },
+        {
+          "name": "balanca_validade_dias",
+          "type": "INT(11)",
+          "nullable": true,
+          "default": "0",
+          "comment": "Balança Validade (Dias)"
+        },
+        {
+          "name": "balanca_tara",
+          "type": "INT(11)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "sku_atributo",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "aliquota_issqn",
+          "type": "DECIMAL(15,2)",
+          "nullable": true
+        },
+        {
+          "name": "item_lista_servico",
+          "type": "VARCHAR(5)",
+          "nullable": true
+        },
+        {
+          "name": "indicador_exigibilidade",
+          "type": "VARCHAR(2)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "preco_d",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "preco_e",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "codigo_beneficio_fiscal",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "embalagem",
+          "type": "DECIMAL(15,2)",
+          "notNull": true
+        },
+        {
+          "name": "codigo_tributacao_municipal",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "nfse_codigo_servico_item_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "codigo_numerico_servico_item",
+          "type": "VARCHAR(20)",
+          "nullable": true
+        },
+        {
+          "name": "data_atualizacao_preco",
+          "type": "DATETIME",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_created_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_code",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "especifico_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true
+        }
+      ]
+    },
+    {
+      "name": "produto_empresa_grade",
+      "description": "Tabela de grade de produtos por empresa",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "produto_empresa_id",
+          "type": "INT(11)",
+          "notNull": true
+        },
+        {
+          "name": "sku",
+          "type": "VARCHAR(50)",
+          "notNull": true,
+          "default": "0",
+          "comment": "SKU"
+        },
+        {
+          "name": "sku_atributo",
+          "type": "VARCHAR(255)",
+          "notNull": true
+        },
+        {
+          "name": "codigo_barra",
+          "type": "VARCHAR(45)",
+          "notNull": true,
+          "comment": "Código Barras"
+        },
+        {
+          "name": "descricao",
+          "type": "VARCHAR(255)",
+          "notNull": true,
+          "comment": "Descrição"
+        },
+        {
+          "name": "preco_venda",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000",
+          "comment": "Preço Venda"
+        },
+        {
+          "name": "estoque",
+          "type": "DECIMAL(15,4)",
+          "notNull": true,
+          "default": "0.0000"
+        },
+        {
+          "name": "estoque_minimo",
+          "type": "DECIMAL(15,4)",
+          "nullable": true,
+          "default": "0.0000"
+        },
+        {
+          "name": "validade",
+          "type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "fabricacao",
+          "type": "DATE",
+          "nullable": true,
+          "comment": "Fabricação"
+        },
+        {
+          "name": "ativo",
+          "type": "TINYINT(1)",
+          "notNull": true,
+          "default": "1"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "softshop_grade",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_created_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_code",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "lote_codigo_agregacao",
+          "type": "VARCHAR(20)",
+          "nullable": true
+        },
+        {
+          "name": "curva_abc",
+          "type": "VARCHAR(5)",
+          "nullable": true
+        },
+        {
+          "name": "data_atualizacao_curva_abc",
+          "type": "DATETIME",
+          "nullable": true
+        }
+      ]
+    },
+    {
+      "name": "grupo",
+      "description": "Tabela de grupos/categorias",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "parent_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "nome",
+          "type": "VARCHAR(255)",
+          "notNull": true
+        },
+        {
+          "name": "editavel",
+          "type": "ENUM('SIM','NAO')",
+          "nullable": true,
+          "default": "SIM"
+        },
+        {
+          "name": "vender",
+          "type": "INT(1)",
+          "notNull": true,
+          "default": "1",
+          "comment": "Vender"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "imagem",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "armacao",
+          "type": "SMALLINT(6)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "lente",
+          "type": "SMALLINT(6)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "restaurante_familia_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "habilitar_acompanhamento",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "acompanhamento_grupo_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "qtd_max",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "self_service",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "perguntar_adicionais",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "nao_enviar_comanda",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "cobrar_taxa_servico",
+          "type": "TINYINT(1)",
+          "nullable": true
+        },
+        {
+          "name": "adicional",
+          "type": "TINYINT(1)",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "marketplace_created_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "marketplace_code",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "restaurante_setor_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "hub_code",
+          "type": "VARCHAR(50)",
+          "nullable": true
+        },
+        {
+          "name": "hub_name",
+          "type": "VARCHAR(50)",
+          "nullable": true
+        },
+        {
+          "name": "hub_name_full",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "ativo",
+          "type": "SMALLINT(6)",
+          "notNull": true,
+          "default": "1"
+        },
+        {
+          "name": "comissao",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        }
+      ]
+    },
+    {
+      "name": "cliente",
+      "description": "Tabela de clientes",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true,
+          "comment": "Codigo"
+        },
+        {
+          "name": "pessoa",
+          "type": "ENUM('FISICA','JURIDICA','ESTRANGEIRA')",
+          "notNull": true
+        },
+        {
+          "name": "cpf_cnpj",
+          "type": "VARCHAR(18)",
+          "nullable": true,
+          "comment": "CNPJ / CPF"
+        },
+        {
+          "name": "inscricao_estadual",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "comment": "Inscrição Estadual"
+        },
+        {
+          "name": "inscricao_municipal",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "comment": "Inscrição Municipal"
+        },
+        {
+          "name": "rg",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "comment": "RG"
+        },
+        {
+          "name": "nome",
+          "type": "VARCHAR(255)",
+          "notNull": true
+        },
+        {
+          "name": "razao_social",
+          "type": "VARCHAR(255)",
+          "notNull": true,
+          "comment": "Razão Social"
+        },
+        {
+          "name": "data_fundacao",
+          "type": "DATE",
+          "nullable": true,
+          "comment": "Data Fundação"
+        },
+        {
+          "name": "data_nascimento",
+          "type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "area_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "comment": "Area"
+        },
+        {
+          "name": "funcionario_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "comment": "Atendente"
+        },
+        {
+          "name": "tipo_cliente_id",
+          "type": "INT(11)",
+          "notNull": true
+        },
+        {
+          "name": "tipo_preco",
+          "type": "ENUM('PADRAO','A','B','C')",
+          "notNull": true,
+          "default": "PADRAO"
+        },
+        {
+          "name": "foto",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "observacao",
+          "type": "TEXT",
+          "nullable": true,
+          "comment": "Observação"
+        },
+        {
+          "name": "desativado",
+          "type": "TINYINT(1)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "bloqueado",
+          "type": "TINYINT(1)",
+          "notNull": true,
+          "default": "0"
+        },
+        {
+          "name": "motivo_bloqueio",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "api_guid",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "contribuinte_icms",
+          "type": "TINYINT(1)",
+          "nullable": true,
+          "comment": "Contribuinte ICMS"
+        },
+        {
+          "name": "indicador_finalidade",
+          "type": "VARCHAR(1)",
+          "nullable": true
+        },
+        {
+          "name": "detalhe_financeiro",
+          "type": "LONGTEXT",
+          "nullable": true
+        },
+        {
+          "name": "limite_credito",
+          "type": "DECIMAL(15,2)",
+          "notNull": true,
+          "default": "0.00"
+        },
+        {
+          "name": "tabela_preco_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true
+        },
+        {
+          "name": "id_estrangeiro",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "cliente_administradora_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true
+        }
+      ]
+    },
+    {
+      "name": "contato",
+      "description": "Tabela de contatos (telefones/e-mails)",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "tipo",
+          "type": "ENUM('PRINCIPAL','OUTROS')",
+          "notNull": true,
+          "default": "OUTROS"
+        },
+        {
+          "name": "cliente_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "fornecedor_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "funcionario_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "transportador_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "indicador_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "nome",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "comment": "Contato"
+        },
+        {
+          "name": "ddd",
+          "type": "VARCHAR(4)",
+          "nullable": true,
+          "comment": "DDD"
+        },
+        {
+          "name": "telefone",
+          "type": "VARCHAR(10)",
+          "nullable": true
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "comment": "E-mail"
+        },
+        {
+          "name": "nascimento",
+          "type": "DATE",
+          "nullable": true,
+          "comment": "Nascimento"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "ativar_notificacao",
+          "type": "TINYINT(4)",
+          "notNull": true,
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "endereco",
+      "description": "Tabela de endereços",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "tipo",
+          "type": "ENUM('COBRANCA','TRABALHO','ENTREGA','PRINCIPAL','OUTRO')",
+          "notNull": true,
+          "default": "OUTRO"
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "funcionario_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "cliente_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "fornecedor_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "transportador_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "contador_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "indicador_id",
+          "type": "INT(11)",
+          "nullable": true
+        },
+        {
+          "name": "cep",
+          "type": "VARCHAR(9)",
+          "nullable": true,
+          "comment": "CEP"
+        },
+        {
+          "name": "endereco",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "numero",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "comment": "Número"
+        },
+        {
+          "name": "complemento",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "bairro",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "cidade_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "comment": "Cidade - UF"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "credenciadora_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true
+        },
+        {
+          "name": "laboratorio_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true
+        }
+      ]
+    },
+    {
+      "name": "nfe_cidade",
+      "description": "Tabela de municípios e estados (padrão IBGE/NF-e)",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "autoIncrement": true,
+          "comment": "Codigo"
+        },
+        {
+          "name": "cidade_uf",
+          "type": "VARCHAR(50)",
+          "notNull": true,
+          "comment": "Cidade - UF"
+        },
+        {
+          "name": "c_cidade",
+          "type": "INT(11)",
+          "notNull": true,
+          "comment": "Código Cidade"
+        },
+        {
+          "name": "cidade",
+          "type": "VARCHAR(255)",
+          "notNull": true,
+          "comment": "Cidade"
+        },
+        {
+          "name": "c_uf",
+          "type": "INT(11)",
+          "notNull": true,
+          "comment": "Código UF"
+        },
+        {
+          "name": "short_uf",
+          "type": "VARCHAR(2)",
+          "notNull": true,
+          "comment": "UF"
+        },
+        {
+          "name": "full_uf",
+          "type": "VARCHAR(20)",
+          "notNull": true,
+          "comment": "UF"
+        },
+        {
+          "name": "c_pais",
+          "type": "VARCHAR(11)",
+          "notNull": true,
+          "comment": "Código País"
+        },
+        {
+          "name": "pais",
+          "type": "VARCHAR(50)",
+          "notNull": true,
+          "comment": "País"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
           "nullable": true
         }
       ]
@@ -367,6 +1656,127 @@
       },
       "to": {
         "table": "produto",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "grupo",
+        "column": "parent_id"
+      },
+      "to": {
+        "table": "grupo",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "grupo",
+        "column": "acompanhamento_grupo_id"
+      },
+      "to": {
+        "table": "grupo",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto_empresa",
+        "column": "produto_id"
+      },
+      "to": {
+        "table": "produto",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto_empresa_grade",
+        "column": "produto_empresa_id"
+      },
+      "to": {
+        "table": "produto_empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto_empresa",
+        "column": "especifico_id"
+      },
+      "to": {
+        "table": "produto_especifico_combustivel",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "endereco",
+        "column": "empresa_id"
+      },
+      "to": {
+        "table": "empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "endereco",
+        "column": "cliente_id"
+      },
+      "to": {
+        "table": "cliente",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "endereco",
+        "column": "funcionario_id"
+      },
+      "to": {
+        "table": "funcionario",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "endereco",
+        "column": "fornecedor_id"
+      },
+      "to": {
+        "table": "fornecedor",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "endereco",
+        "column": "cidade_id"
+      },
+      "to": {
+        "table": "cidade",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "endereco",
+        "column": "cidade_id"
+      },
+      "to": {
+        "table": "nfe_cidade",
         "column": "id"
       },
       "type": "many-to-one"
