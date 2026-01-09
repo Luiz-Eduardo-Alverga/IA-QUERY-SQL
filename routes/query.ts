@@ -1,6 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { AIService } from '../services/ai-service.js';
 import { QueryRequest } from '../types/database.js';
+import { postQueryDoc } from '../docs/routes/query.js';
 
 export default async function queryRoutes(
   fastify: FastifyInstance,
@@ -9,7 +10,9 @@ export default async function queryRoutes(
   const aiService = fastify.aiService as AIService;
 
   // POST /api/query - Gerar SQL a partir de linguagem natural
-  fastify.post<{ Body: QueryRequest }>('/api/query', async (request, reply) => {
+  fastify.post<{ Body: QueryRequest }>('/api/query', {
+    schema: postQueryDoc
+  }, async (request, reply) => {
     try {
       // Validação básica
       if (!request.body.question || request.body.question.trim().length === 0) {

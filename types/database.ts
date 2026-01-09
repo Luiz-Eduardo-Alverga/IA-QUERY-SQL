@@ -27,6 +27,11 @@ export interface DatabaseSchema {
   relationships?: DatabaseRelationship[];
 }
 
+export interface SchemaUpdate {
+  tables?: DatabaseTable[];
+  relationships?: DatabaseRelationship[];
+}
+
 export interface QueryRequest {
   question: string;
   context?: string; // Contexto adicional opcional
