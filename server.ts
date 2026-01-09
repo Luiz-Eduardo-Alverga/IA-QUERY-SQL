@@ -1,5 +1,6 @@
 import 'dotenv/config'; 
 import Fastify, { FastifyInstance } from 'fastify';
+import cors from '@fastify/cors';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
 import indexRoutes from './routes/index.js';
@@ -68,9 +69,17 @@ const start = async (): Promise<void> => {
       staticCSP: true,
       transformStaticCSP: (header) => header,
       uiHooks: {
-        onRequest: function (request, reply, next) { next() },
-        preHandler: function (request, reply, next) { next() }
+        onRequest: function (_request, _reply, next) { next() },
+        preHandler: function (_request, _reply, next) { next() }
       }
+    });
+
+    // Configurar CORS
+    await fastify.register(cors, {
+      origin: true, // Permite todas as origens (desenvolvimento)
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
     });
 
     // Inicializar serviço de IA (Gemini)
@@ -100,7 +109,7 @@ const start = async (): Promise<void> => {
     await fastify.register(queryRoutes);
 
     await fastify.listen({ 
-      port: 3000,
+      port: 3001,
       host: '0.0.0.0'
     });
     
