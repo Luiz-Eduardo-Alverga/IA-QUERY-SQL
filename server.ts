@@ -109,7 +109,7 @@ const start = async (): Promise<void> => {
     await fastify.register(queryRoutes);
 
     await fastify.listen({ 
-      port: 3001,
+      port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
       host: '0.0.0.0'
     });
     
