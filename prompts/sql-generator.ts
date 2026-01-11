@@ -23,8 +23,7 @@ INSTRUÇÕES:
 3. Inclua JOINs quando necessário.
 4. Para filtrar de produtos ativados/desativados, utilize a coluna produto.desativado.
 5. Utilize a  coluna produto_empresa_grade.ativo apenas se o usuário especificar que os produtos são grade.
-6. Retorne a explanation em português.
-7. Retorne a resposta no formato JSON:
+6. Retorne a resposta no formato JSON:
 {
   "sql": "SELECT ...",
   "explanation": "Explicação da query",
@@ -65,9 +64,3 @@ function formatSchema(schema: DatabaseSchema): string {
 
   return formatted;
 }
-
-
-// 4. FORMATAÇÃO OBRIGATÓRIA: 
-//    - Use quebras de linha entre as cláusulas (SELECT, FROM, JOIN, WHERE, etc).
-//    - Indente as colunas no SELECT e sub-cláusulas.
-//    - Use aliases curtos e significativos para as tabelas.

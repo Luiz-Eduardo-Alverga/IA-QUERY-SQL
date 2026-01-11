@@ -113,7 +113,7 @@ const start = async (): Promise<void> => {
       host: '0.0.0.0'
     });
     
-    console.log('🚀 Servidor Fastify rodando em http://localhost:3000');
+    console.log(`Servidor Fastify rodando em http://localhost:${process.env.PORT}`);
     console.log('📚 Documentação Swagger disponível em http://localhost:3000/docs');
   } catch (err) {
     fastify.log.error(err);

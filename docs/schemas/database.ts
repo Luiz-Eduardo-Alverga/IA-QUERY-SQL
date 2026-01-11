@@ -77,7 +77,7 @@ export const relationshipSchema = {
     },
     type: {
       type: 'string',
-      enum: ['one-to-one', 'one-to-many', 'many-to-many'],
+      enum: ['one-to-one', 'one-to-many', 'many-to-one', 'many-to-many'],
       description: 'Tipo de relacionamento'
     }
   }

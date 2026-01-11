@@ -18,7 +18,7 @@ export interface DatabaseTable {
 export interface DatabaseRelationship {
   from: { table: string; column: string };
   to: { table: string; column: string };
-  type: 'one-to-one' | 'one-to-many' | 'many-to-many';
+  type: 'one-to-one' | 'one-to-many' | 'many-to-many' | 'many-to-one';
 }
 
 export interface DatabaseSchema {

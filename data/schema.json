@@ -1624,6 +1624,264 @@
           "nullable": true
         }
       ]
+    },
+    {
+      "name": "vinculos_fiscais",
+      "description": "Tabela de vínculos fiscais para produtos e serviços",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(10) UNSIGNED",
+          "primaryKey": true,
+          "nullable": false
+        },
+        {
+          "name": "nome_vinculo",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "tipo_item",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "tipo_vinculo",
+          "type": "ENUM('PRODUTO','SERVICO')",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "indicador_finalidade",
+          "type": "VARCHAR(1)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "vinculo_padrao",
+          "type": "TINYINT(1)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "vinculo_padrao_servico",
+          "type": "TINYINT(1)",
+          "primaryKey": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "vinculos_fiscais_configuracoes",
+      "description": "Configurações detalhadas de impostos e CFOPs por UF para os vínculos fiscais",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11) UNSIGNED",
+          "primaryKey": true,
+          "nullable": false
+        },
+        {
+          "name": "vinculo_fiscal_id",
+          "type": "INT(11) UNSIGNED",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "grupo",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "cfop_nfe_entrada",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "cfop_nfce_saida",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "cfop_nfe_saida",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "cfop_nfce_entrada",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "natureza",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "uf_origem",
+          "type": "ENUM('AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PR','PB','PA','PE','PI','RJ','RN','RS','RO','RR','SC','SE','SP','TO')",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "uf_destino",
+          "type": "ENUM('TODAS','AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PR','PB','PA','PE','PI','RJ','RN','RS','RO','RR','SC','SE','SP','TO')",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "icms_saida_origem",
+          "type": "TINYINT(4)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "icms_percentual_diferimento",
+          "type": "DECIMAL(5,2)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "nfce_aliquota",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "servico_iss_saida",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "servico_csll_saida",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "servico_inss_saida",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "servico_ir_saida",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "regime_tributario",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "modelo",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "icms_normal_aliquota",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "icms_motivo_desoneracao",
+          "type": "VARCHAR(60)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "icms_valor_desoneracao",
+          "type": "DECIMAL(13,2)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "zerar_icms",
+          "type": "SMALLINT(6)",
+          "primaryKey": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "produto_empresa_vinculo_fiscal",
+      "description": "Tabela de ligação que associa produtos de uma empresa específica a um vínculo fiscal",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11) UNSIGNED",
+          "primaryKey": true,
+          "nullable": false
+        },
+        {
+          "name": "produto_empresa_id",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "vinculo_fiscal_id",
+          "type": "INT(11) UNSIGNED",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": true
+        }
+      ]
     }
   ],
   "relationships": [
@@ -1777,6 +2035,61 @@
       },
       "to": {
         "table": "nfe_cidade",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "string",
+        "column": "string"
+      },
+      "to": {
+        "table": "string",
+        "column": "string"
+      },
+      "type": "one-to-one"
+    },
+    {
+      "from": {
+        "table": "vinculos_fiscais_configuracoes",
+        "column": "vinculo_fiscal_id"
+      },
+      "to": {
+        "table": "vinculos_fiscais",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto_empresa_vinculo_fiscal",
+        "column": "vinculo_fiscal_id"
+      },
+      "to": {
+        "table": "vinculos_fiscais",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto_empresa_vinculo_fiscal",
+        "column": "produto_empresa_id"
+      },
+      "to": {
+        "table": "produto_empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "produto_empresa_vinculo_fiscal",
+        "column": "empresa_id"
+      },
+      "to": {
+        "table": "empresa",
         "column": "id"
       },
       "type": "many-to-one"

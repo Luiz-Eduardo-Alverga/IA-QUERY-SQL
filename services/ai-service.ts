@@ -40,7 +40,7 @@ export class AIService {
         model: this.modelName,
         generationConfig: this.generationConfig,
         systemInstruction:
-          'Você é um especialista em SQL. Gere apenas consultas SQL válidas baseadas no schema fornecido. Retorne SEMPRE um JSON com os campos: sql, explanation, confidence.'
+          'Você é um especialista em SQL. Gere apenas consultas SQL válidas baseadas no schema fornecido. Retorne SEMPRE um JSON com os campos: sql, explanation, confidence. Retorne a explanation em português.'
       });
 
       const result = await model.generateContent([
