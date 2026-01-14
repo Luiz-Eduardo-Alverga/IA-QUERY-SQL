@@ -1882,6 +1882,566 @@
           "nullable": true
         }
       ]
+    },
+    {
+      "name": "venda",
+      "description": "Tabela de vendas",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11) AUTO_INCREMENT",
+          "nullable": false,
+          "primaryKey": true
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "empresa",
+            "column": "id"
+          }
+        },
+        {
+          "name": "cliente_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "cliente",
+            "column": "id"
+          }
+        },
+        {
+          "name": "funcionario_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "funcionario",
+            "column": "id"
+          }
+        },
+        {
+          "name": "nfe_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "nota_fiscal_eletronica",
+            "column": "id"
+          }
+        },
+        {
+          "name": "nfse_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "nota_fiscal_servico_eletronica",
+            "column": "id"
+          }
+        },
+        {
+          "name": "observacao",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_cliente_cpf",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_cliente_nome",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_faturar",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_status",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_app_name",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_data_hora_venda",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "desconto_valor",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "desconto_percentual",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "acrescimo_valor",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "acrescimo_percentual",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "percentual_comissao_venda",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_guid",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "api_device_id",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "cancelada",
+          "type": "TINYINT(1)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "usuario_lancamento_id",
+          "type": "INT(11) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "users",
+            "column": "id"
+          }
+        },
+        {
+          "name": "bloqueada",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "parent_guid",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "usuario_cancelamento_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "users",
+            "column": "id"
+          }
+        },
+        {
+          "name": "data_hora_cancelamento",
+          "type": "DATETIME",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_documento",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_caixa",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "tipo_preco_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "tabela_preco",
+            "column": "id"
+          }
+        },
+        {
+          "name": "integracao_delivery",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "entregador_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "funcionario",
+            "column": "id"
+          }
+        },
+        {
+          "name": "assistencia_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "assistencia",
+            "column": "id"
+          }
+        },
+        {
+          "name": "caixa_funcoes_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "caixa_funcoes",
+            "column": "id"
+          }
+        },
+        {
+          "name": "caixa_turno",
+          "type": "TINYINT(3) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "caixa_data",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "indicador_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "indicador",
+            "column": "id"
+          }
+        },
+        {
+          "name": "marketplace_pedido_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "marketplace_pedido",
+            "column": "id"
+          }
+        },
+        {
+          "name": "atendente_mesa",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "comissao_entregador",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "comissao_indicador",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_mesa",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_comanda",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "origem_venda",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "quantidade_pessoas",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "quantidade_comandas",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "tipo_lancamento",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "orcamento_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "orcamento",
+            "column": "id"
+          }
+        },
+        {
+          "name": "orcamento_competencia",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_pre_venda",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_data_hora_lancamento",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "venda_item",
+      "description": "Detalhes dos itens de cada venda, incluindo preços, quantidades, descontos por item e vínculos com produtos e grades.",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "primaryKey": true,
+          "nullable": false
+        },
+        {
+          "name": "venda_id",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "produto_id",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "produto_empresa_grade_id",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "descricao_item",
+          "type": "VARCHAR(255)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "preco",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "quantidade",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "preco_compra",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "desconto_valor_item",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "acrescimo_valor_item",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "comissao",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "vinculo_nfe",
+          "type": "ENUM('AGUARDANDO','POSSUI','NAO_POSSUI')",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "desabilita_rateio",
+          "type": "TINYINT(1)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "valor_unidade_promocao",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "promocao_aplicada",
+          "type": "SMALLINT(6)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "preco_original",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "existe_tabela_preco",
+          "type": "SMALLINT(6)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "tabela_preco_valor",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "peso",
+          "type": "DECIMAL(15,4)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "atendente_item",
+          "type": "INT(11)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "comissao_atendente",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "cobrar_taxa_servico",
+          "type": "TINYINT(4)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "guid",
+          "type": "VARCHAR(50)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "parent_guid",
+          "type": "VARCHAR(50)",
+          "primaryKey": false,
+          "nullable": true
+        },
+        {
+          "name": "tipo_faturamento",
+          "type": "SMALLINT(6)",
+          "primaryKey": false,
+          "nullable": false
+        },
+        {
+          "name": "valor_desconto_promocao",
+          "type": "DECIMAL(15,2)",
+          "primaryKey": false,
+          "nullable": false
+        }
+      ]
     }
   ],
   "relationships": [
@@ -2090,6 +2650,204 @@
       },
       "to": {
         "table": "empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "assistencia_id"
+      },
+      "to": {
+        "table": "assistencia",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "caixa_funcoes_id"
+      },
+      "to": {
+        "table": "caixa_funcoes",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "entregador_id"
+      },
+      "to": {
+        "table": "funcionario",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "empresa_id"
+      },
+      "to": {
+        "table": "empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "cliente_id"
+      },
+      "to": {
+        "table": "cliente",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "funcionario_id"
+      },
+      "to": {
+        "table": "funcionario",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "indicador_id"
+      },
+      "to": {
+        "table": "indicador",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "marketplace_pedido_id"
+      },
+      "to": {
+        "table": "marketplace_pedido",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "nfe_id"
+      },
+      "to": {
+        "table": "nota_fiscal_eletronica",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "nfse_id"
+      },
+      "to": {
+        "table": "nota_fiscal_servico_eletronica",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "orcamento_id"
+      },
+      "to": {
+        "table": "orcamento",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "tipo_preco_id"
+      },
+      "to": {
+        "table": "tabela_preco",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "usuario_cancelamento_id"
+      },
+      "to": {
+        "table": "users",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda",
+        "column": "usuario_lancamento_id"
+      },
+      "to": {
+        "table": "users",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda_item",
+        "column": "venda_id"
+      },
+      "to": {
+        "table": "venda",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda_item",
+        "column": "produto_id"
+      },
+      "to": {
+        "table": "produto",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda_item",
+        "column": "produto_empresa_grade_id"
+      },
+      "to": {
+        "table": "produto_empresa_grade",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "venda_item",
+        "column": "atendente_item"
+      },
+      "to": {
+        "table": "funcionario",
         "column": "id"
       },
       "type": "many-to-one"

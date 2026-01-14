@@ -6,8 +6,11 @@ import swaggerUi from '@fastify/swagger-ui';
 import indexRoutes from './routes/index.js';
 import healthRoutes from './routes/health.js';
 import schemaRoutes from './routes/schema.js';
+import tablesRoutes from './routes/tables.js';
 import queryRoutes from './routes/query.js';
+import metricsRoutes from './routes/metrics.js';
 import { AIService } from './services/ai-service.js';
+import { MetricsService } from './services/metrics-service.js';
 
 // Declarar tipo para decorator
 declare module 'fastify' {
@@ -48,6 +51,10 @@ const start = async (): Promise<void> => {
           { 
             name: 'query', 
             description: 'Geração de SQL a partir de linguagem natural usando Inteligência Artificial.' 
+          },
+          { 
+            name: 'metrics', 
+            description: 'Métricas e monitoramento de performance da geração de SQL.' 
           },
           { 
             name: 'health', 
@@ -91,8 +98,9 @@ const start = async (): Promise<void> => {
     }
 
     let aiService: AIService;
+    const metricsService = new MetricsService();
     try {
-      aiService = new AIService(geminiApiKey, geminiModel);
+      aiService = new AIService(geminiApiKey, geminiModel, metricsService);
       fastify.decorate('aiService', aiService);
       fastify.log.info(`Gemini configurado com o modelo: ${geminiModel}`);
     } catch (error: any) {
@@ -106,7 +114,9 @@ const start = async (): Promise<void> => {
     await fastify.register(indexRoutes);
     await fastify.register(healthRoutes);
     await fastify.register(schemaRoutes);
+    await fastify.register(tablesRoutes);
     await fastify.register(queryRoutes);
+    await fastify.register(metricsRoutes);
 
     await fastify.listen({ 
       port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
@@ -114,7 +124,7 @@ const start = async (): Promise<void> => {
     });
     
     console.log(`Servidor Fastify rodando em http://localhost:${process.env.PORT}`);
-    console.log('📚 Documentação Swagger disponível em http://localhost:3000/docs');
+    console.log(`📚 Documentação Swagger disponível em http://localhost:${process.env.PORT}/docs`);
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);

@@ -1,14 +1,16 @@
 import { GoogleGenerativeAI, GenerationConfig } from '@google/generative-ai';
 import { DatabaseSchema, QueryRequest, QueryResponse } from '../types/database.js';
-import { buildPrompt } from '../prompts/sql-generator.js';
+import { buildPrompt, getSchemaStats } from '../prompts/sql-generator.js';
+import { MetricsService } from './metrics-service.js';
 
 export class AIService {
   private client: GoogleGenerativeAI;
   private modelName: string;
   private generationConfig: GenerationConfig;
   private schema: DatabaseSchema | null = null;
+  private metricsService: MetricsService;
 
-  constructor(apiKey: string, modelName = 'gemini-1.5-flash') {
+  constructor(apiKey: string, modelName = 'gemini-1.5-flash', metricsService?: MetricsService) {
     if (!apiKey) {
       throw new Error('API Key do Gemini não fornecida');
     }
@@ -18,6 +20,11 @@ export class AIService {
       temperature: 0.1,
       responseMimeType: 'application/json'
     };
+    this.metricsService = metricsService || new MetricsService();
+  }
+
+  getMetricsService(): MetricsService {
+    return this.metricsService;
   }
 
   setSchema(schema: DatabaseSchema | null): void {
@@ -34,6 +41,8 @@ export class AIService {
     }
 
     const prompt = buildPrompt(this.schema, request.question, request.context);
+    const schemaStats = getSchemaStats(this.schema);
+    const startTime = Date.now();
 
     try {
       const model = this.client.getGenerativeModel({
@@ -58,12 +67,42 @@ export class AIService {
         throw new Error('Resposta da IA não contém SQL válido');
       }
 
-      return {
+      const duration = Date.now() - startTime;
+      const sqlResponse = {
         sql: String(response.sql).trim(),
         explanation: response.explanation || 'SQL gerado com sucesso',
         confidence: response.confidence || 0.8
       };
+
+      // Registrar métrica de sucesso
+      this.metricsService.recordMetric({
+        timestamp: new Date(),
+        duration,
+        promptSize: prompt.length,
+        schemaTables: schemaStats.tables,
+        schemaColumns: schemaStats.columns,
+        schemaRelationships: schemaStats.relationships,
+        confidence: sqlResponse.confidence,
+        success: true
+      });
+
+      return sqlResponse;
     } catch (error: any) {
+      const duration = Date.now() - startTime;
+      
+      // Registrar métrica de erro
+      this.metricsService.recordMetric({
+        timestamp: new Date(),
+        duration,
+        promptSize: prompt.length,
+        schemaTables: schemaStats.tables,
+        schemaColumns: schemaStats.columns,
+        schemaRelationships: schemaStats.relationships,
+        confidence: 0,
+        success: false,
+        error: error.message
+      });
+
       if (error instanceof SyntaxError) {
         throw new Error('Erro ao processar resposta da IA: formato JSON inválido');
       }

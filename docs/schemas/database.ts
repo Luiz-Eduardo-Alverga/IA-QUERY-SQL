@@ -151,6 +151,34 @@ export const schemaGetResponseSchema = {
   }
 };
 
+export const tableSummarySchema = {
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+      description: 'Nome da tabela'
+    },
+    description: {
+      type: 'string',
+      description: 'Descrição da tabela'
+    }
+  },
+  required: ['name']
+};
+
+export const tablesListResponseSchema = {
+  type: 'object',
+  properties: {
+    success: { type: 'boolean' },
+    tables: {
+      type: 'array',
+      description: 'Lista de tabelas com nome e descrição',
+      items: tableSummarySchema
+    },
+    count: { type: 'number' }
+  }
+};
+
 export const errorResponseSchema = {
   type: 'object',
   properties: {

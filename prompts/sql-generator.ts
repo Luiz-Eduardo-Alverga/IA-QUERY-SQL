@@ -23,7 +23,8 @@ INSTRUÇÕES:
 3. Inclua JOINs quando necessário.
 4. Para filtrar de produtos ativados/desativados, utilize a coluna produto.desativado.
 5. Utilize a  coluna produto_empresa_grade.ativo apenas se o usuário especificar que os produtos são grade.
-6. Retorne a resposta no formato JSON:
+6. Para querys de busca de vendas por data, consulte a data primeiro pelo campo venda.api_data_hora_venda e caso ele esteja nulo, consulte a data pelo campo venda.created_at.
+7. Retorne a resposta no formato JSON:
 {
   "sql": "SELECT ...",
   "explanation": "Explicação da query",
@@ -63,4 +64,26 @@ function formatSchema(schema: DatabaseSchema): string {
   }
 
   return formatted;
+}
+
+export function getSchemaStats(schema: DatabaseSchema): {
+  tables: number;
+  columns: number;
+  relationships: number;
+  promptSize: number;
+} {
+  const tables = schema.tables.length;
+  const columns = schema.tables.reduce((sum, table) => sum + table.columns.length, 0);
+  const relationships = schema.relationships?.length || 0;
+  
+  // Calcular tamanho aproximado do prompt formatado
+  const formatted = formatSchema(schema);
+  const promptSize = formatted.length;
+  
+  return {
+    tables,
+    columns,
+    relationships,
+    promptSize
+  };
 }
