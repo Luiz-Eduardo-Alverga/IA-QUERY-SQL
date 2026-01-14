@@ -21,10 +21,11 @@ INSTRUÇÕES:
 1. Gere apenas SQL válido e otimizado.
 2. Use os nomes exatos das tabelas e colunas do schema.
 3. Inclua JOINs quando necessário.
-4. Para filtrar de produtos ativados/desativados, utilize a coluna produto.desativado.
-5. Utilize a  coluna produto_empresa_grade.ativo apenas se o usuário especificar que os produtos são grade.
+4. Para filtrar produtos ativados/desativados, utilize a coluna produto.desativado.
+5. Utilize a coluna produto_empresa_grade.ativo apenas se o usuário especificar que os produtos são grade.
 6. Para querys de busca de vendas por data, consulte a data primeiro pelo campo venda.api_data_hora_venda e caso ele esteja nulo, consulte a data pelo campo venda.created_at.
-7. Retorne a resposta no formato JSON:
+7. O campo responsável por definir se o produto é combo, é o campo produto.habilitar_acompanhamento.
+8. Retorne a resposta no formato JSON:
 {
   "sql": "SELECT ...",
   "explanation": "Explicação da query",
