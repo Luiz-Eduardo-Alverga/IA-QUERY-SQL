@@ -2,7 +2,7 @@ import { QueryMetrics, AggregatedMetrics } from '../types/metrics.js';
 
 export class MetricsService {
   private metrics: QueryMetrics[] = [];
-  private readonly MAX_HISTORY = 100; // Manter últimas 100 requisições
+  private readonly MAX_HISTORY = 100;
 
   recordMetric(metric: QueryMetrics): void {
     this.metrics.push(metric);

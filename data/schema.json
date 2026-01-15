@@ -2442,6 +2442,1120 @@
           "nullable": false
         }
       ]
+    },
+    {
+      "name": "nota_fiscal_eletronica",
+      "description": "Registo completo de documentos fiscais eletrónicos (NF-e/NFC-e), incluindo protocolos SEFAZ, chaves de acesso e detalhes de contingência/SAT.",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11) UNSIGNED",
+          "nullable": false,
+          "primaryKey": true
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "versao",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "chave_acesso",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "codigo_nota_fiscal",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "natureza",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "indicador_forma_pagamento",
+          "type": "INT(1)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "modelo",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "serie",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_nfe",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "data_hora_emissao",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "data_hora_saida",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "tipo_operacao",
+          "type": "INT(1)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "identificador_local_destino",
+          "type": "INT(1)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "tipo_emissao",
+          "type": "INT(2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "chave_dv",
+          "type": "INT(1)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "ambiente",
+          "type": "INT(1)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "xml",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "xml_recibo_emissao",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "xml_cancelamento",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "justificativa_cancelamento",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "recibo_situacao",
+          "type": "ENUM('AGUARDANDO','NAO_ENVIADO','RECEBIDO','CANCELADA','DENEGADA','CONTINGENCIA')",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "lote_emissao",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_recibo",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "numero_protocolo_autorizacao",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "data_hora_protocolo_autorizacao",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "inutilizado_em",
+          "type": "DATETIME",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "rateavel",
+          "type": "TINYINT(4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "finalidade",
+          "type": "TINYINT(1)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "indicador_finalidade",
+          "type": "VARCHAR(1)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "indicador_presencial",
+          "type": "VARCHAR(1)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "indicador_intermediador",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "codigo_natureza",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "data_hora_contingencia",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "justificativa_contingencia",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cobranca_numero_fatura",
+          "type": "VARCHAR(60)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cobranca_valor_original",
+          "type": "DECIMAL(13,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cobranca_valor_desconto",
+          "type": "DECIMAL(13,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cobranca_valor_liquido",
+          "type": "DECIMAL(13,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_frete_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "total_seguro_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "total_valor_outras_despesas",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "total_desconto_percentual",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "total_desconto_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icms_base_calculo",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icms_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icmsst_base_calculo",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icmsst_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_produto_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_ipi_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_pis_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_cofins_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_nota_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_tributos_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icmsdesoneracao_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icms_uf_destino_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icms_uf_remetente_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_fcp_uf_destino_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icms_fundo_combate_pobreza_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_icmsst_fundo_combate_pobreza_valor",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_servico",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_base_calculo",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_iss",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_pis",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_cofins",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_deducao",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_outro",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_desconto_incondicionado",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_data_competencia",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_regime_tributario",
+          "type": "VARCHAR(2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_desconto_condicionado",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "total_issqn_valor_iss_retencao",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "informacoes_adicionais_complementares",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "informacoes_adicionais_fisco",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "digest_value",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "codigo_status",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "mensagem_erro",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "sat_equipamento_serie",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "sat_assinatura_qr_code",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "compra_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false,
+          "foreignKey": {
+            "table": "compra",
+            "column": "id"
+          }
+        },
+        {
+          "name": "duplicidade",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "confirmacao_duplicidade",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "chave_acesso_anterior_duplicidade",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "memoria_fiscal",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "operacao_tipo",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "movimentar_estoque",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "financeiro",
+      "description": "Tabela mestre de lançamentos financeiros, registrando movimentações de débito e crédito, origens de lançamentos e vínculos com entidades (clientes/fornecedores).",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": true
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "data_lancamento",
+          "type": "DATE",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "categoria_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "documento",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "historico",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "fornecedor_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cliente_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "contrato_servico_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "valor",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "tipo_documento_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "origem",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "device_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "usuario_lancamento_id",
+          "type": "INT(11) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_device_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "financeiro_parcela",
+      "description": "Detalhamento das parcelas de lançamentos financeiros, compras e vendas, controlando vencimentos, recebimentos, taxas de cartões e status de quitação.",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(11) AUTO_INCREMENT",
+          "nullable": false,
+          "primaryKey": true
+        },
+        {
+          "name": "compra_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "venda_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "financeiro_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "transferencia_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "fornecedor_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cliente_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "contrato_servico_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "documento",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "forma_pagamento_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "conta_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cartao_credito_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "venda_cartao_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_codigo_pagamento",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_nome_pagamento",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "parcela",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_agenciabancaria_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_agencia",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_conta",
+          "type": "VARCHAR(15)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_numero",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_emitente",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_devolucao_data",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_devolucao_motivo",
+          "type": "INT(3)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "vencimento",
+          "type": "DATE",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "valor_parcela",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "tarifa",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "duplicata_pendente",
+          "type": "INT(1)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "banco_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "forma_pagamento_baixa_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "financeira_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "data_pagamento",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "valor_pago",
+          "type": "DECIMAL(15,4)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "data_caixa",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "observacao",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "acrescimo",
+          "type": "DECIMAL(15,4)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "desconto",
+          "type": "DECIMAL(15,4)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cancelada",
+          "type": "TINYINT(1)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "parcela_vinculada",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "operacao",
+          "type": "ENUM('DEBITO','CREDITO')",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "empresa_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "user_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "motivo_cancelamento",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cheque_banco",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "data_cancelamento",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "guid",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "pos_habilitar",
+          "type": "SMALLINT(6)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "tp_integra",
+          "type": "BIGINT(20)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_cobranca_id",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_cobranca_agreemente_id",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "caixa_funcoes_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "codigo_autorizacao",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cnpj_instituicao_financeira",
+          "type": "VARCHAR(50)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "tipo_debito_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "cartao_credito_taxa_admin",
+          "type": "DECIMAL(15,2)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "conciliacao_extrato_bancario",
+          "type": "SMALLINT(6)",
+          "nullable": false,
+          "primaryKey": false
+        }
+      ]
+    },
+    {
+      "name": "financeiro_parcela_pagamento",
+      "description": "Registo detalhado das baixas de parcelas financeiras, contendo os valores efetivamente pagos, descontos, acréscimos, conta bancária de destino e identificação do caixa/turno.",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": false,
+          "primaryKey": true
+        },
+        {
+          "name": "valor_pago",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "acrescimo",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "desconto",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "conta_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "forma_pagamento_baixa_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "financeiro_parcela_id",
+          "type": "INT(11)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "data_pagamento",
+          "type": "DATE",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "deleted_at",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "user_baixa_id",
+          "type": "INT(10) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "api_device_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "valor_recebido",
+          "type": "DECIMAL(15,4)",
+          "nullable": false,
+          "primaryKey": false
+        },
+        {
+          "name": "caixa_funcoes_id",
+          "type": "INT(11)",
+          "nullable": true,
+          "primaryKey": false
+        },
+        {
+          "name": "caixa_turno",
+          "type": "TINYINT(3) UNSIGNED",
+          "nullable": true,
+          "primaryKey": false
+        }
+      ]
     }
   ],
   "relationships": [
@@ -2848,6 +3962,281 @@
       },
       "to": {
         "table": "funcionario",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "nota_fiscal_eletronica",
+        "column": "compra_id"
+      },
+      "to": {
+        "table": "compra",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "nota_fiscal_eletronica",
+        "column": "empresa_id"
+      },
+      "to": {
+        "table": "empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "empresa_id"
+      },
+      "to": {
+        "table": "empresa",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "categoria_id"
+      },
+      "to": {
+        "table": "financeiro_categoria",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "fornecedor_id"
+      },
+      "to": {
+        "table": "fornecedor",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "cliente_id"
+      },
+      "to": {
+        "table": "cliente",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "contrato_servico_id"
+      },
+      "to": {
+        "table": "contrato_servico",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "tipo_documento_id"
+      },
+      "to": {
+        "table": "tipo_documento",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro",
+        "column": "usuario_lancamento_id"
+      },
+      "to": {
+        "table": "users",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "compra_id"
+      },
+      "to": {
+        "table": "compra",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "venda_id"
+      },
+      "to": {
+        "table": "venda",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "financeiro_id"
+      },
+      "to": {
+        "table": "financeiro",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "fornecedor_id"
+      },
+      "to": {
+        "table": "fornecedor",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "cliente_id"
+      },
+      "to": {
+        "table": "cliente",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "contrato_servico_id"
+      },
+      "to": {
+        "table": "contrato_servico",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "forma_pagamento_id"
+      },
+      "to": {
+        "table": "forma_pagamento",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "venda_cartao_id"
+      },
+      "to": {
+        "table": "venda_cartao",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "user_id"
+      },
+      "to": {
+        "table": "users",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "caixa_funcoes_id"
+      },
+      "to": {
+        "table": "caixa_funcoes",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela",
+        "column": "tipo_debito_id"
+      },
+      "to": {
+        "table": "tipo_debito",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela_pagamento",
+        "column": "financeiro_parcela_id"
+      },
+      "to": {
+        "table": "financeiro_parcela",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela_pagamento",
+        "column": "conta_id"
+      },
+      "to": {
+        "table": "conta",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela_pagamento",
+        "column": "forma_pagamento_baixa_id"
+      },
+      "to": {
+        "table": "forma_pagamento",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela_pagamento",
+        "column": "user_baixa_id"
+      },
+      "to": {
+        "table": "users",
+        "column": "id"
+      },
+      "type": "many-to-one"
+    },
+    {
+      "from": {
+        "table": "financeiro_parcela_pagamento",
+        "column": "caixa_funcoes_id"
+      },
+      "to": {
+        "table": "caixa_funcoes",
         "column": "id"
       },
       "type": "many-to-one"

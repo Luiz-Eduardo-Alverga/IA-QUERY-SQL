@@ -23,14 +23,17 @@ INSTRUÇÕES:
 3. Inclua JOINs quando necessário.
 4. Para filtrar produtos ativados/desativados, utilize a coluna produto.desativado.
 5. Utilize a coluna produto_empresa_grade.ativo apenas se o usuário especificar que os produtos são grade.
-6. Para querys de busca de vendas por data, consulte a data primeiro pelo campo venda.api_data_hora_venda e caso ele esteja nulo, consulte a data pelo campo venda.created_at.
+6. Para buscas ou exibições de data de venda, utilize SEMPRE a lógica COALESCE(venda.api_data_hora_venda, venda.created_at). Isso garante que, se a data da API estiver nula, a data de criação seja utilizada como fallback. Aplique isso tanto no SELECT quanto nos filtros de WHERE.
 7. O campo responsável por definir se o produto é combo, é o campo produto.habilitar_acompanhamento.
-8. Retorne a resposta no formato JSON:
+8. Sempre que o usuário solicitar Notas Fiscais, utilize o critério nota_fiscal_eletronica.modelo = 55
+9. Sempre que o usuário solicitar Cupons Fiscais, utilize o critério nota_fiscal_eletronica.modelo = 65.
+10. Retorne a resposta no formato JSON:
 {
   "sql": "SELECT ...",
   "explanation": "Explicação da query",
   "confidence": 0.95
 }
+  11. CONSIDERAÇÃO DE PAGAMENTO: Um pagamento só deve ser considerado concluído (baixado) quando existirem dados correspondentes na tabela 'financeiro_parcela_pagamento'. Para relatórios de valores efetivamente recebidos ou pagos, realize o JOIN entre 'financeiro_parcela' e 'financeiro_parcela_pagamento'.
 
 SQL:
 `.trim();
